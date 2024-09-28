@@ -13,6 +13,11 @@ namespace training_task1
             this.person = person ?? new Person {
                 Id = Guid.NewGuid(),
                 BirthDate = DateTime.Now.AddYears(-16),
+                Name = "JOja",
+                AvrMark = 3.0m,
+                Dept = false,
+                Expelled = true,
+                Gender = Gender.Male,
             };
             InitializeComponent();
 
