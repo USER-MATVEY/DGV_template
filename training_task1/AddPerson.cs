@@ -26,12 +26,6 @@ namespace training_task1
                 genderComboBox.SelectedIndex = 0;
             }
 
-            fioTextBox.DataBindings.Add(new Binding(
-                nameof(TextBox.Text),
-                this.person,
-                nameof(Person.Name),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
 
             genderComboBox.DataBindings.Add(new Binding(
                 nameof(ComboBox.SelectedItem),

@@ -53,6 +53,7 @@
       <DependentUpon>AddPerson.cs</DependentUpon>
     </Compile>
     <Compile Include="DataGenerator.cs" />
+    <Compile Include="Extensios.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
