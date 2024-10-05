@@ -1,4 +1,8 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using training_task1.Models;
 
@@ -10,63 +14,82 @@ namespace training_task1
 
         public AddPerson(Person person = null)
         {
-            this.person = person ?? new Person {
-                Id = Guid.NewGuid(),
-                BirthDate = DateTime.Now.AddYears(-16),
-                Name = "JOja",
-                AvrMark = 3.0m,
-                Dept = false,
-                Expelled = true,
-                Gender = Gender.Male,
-            };
+            this.person = person ?? DataGenerator.CreatePerson(x => x.Name = "Жожа");
             InitializeComponent();
 
-            genderComboBox.Items.Add(Gender.Male);
-            genderComboBox.Items.Add(Gender.Female);
+            foreach (var item in Enum.GetValues(typeof(Gender)))
+            {
+                genderComboBox.Items.Add(item);
+            }
+            if (genderComboBox.Items.Count > 0)
+            {
+                genderComboBox.SelectedIndex = 0;
+            }
 
             fioTextBox.DataBindings.Add(new Binding(
-                "Text",
+                nameof(TextBox.Text),
                 this.person,
-                "Name",
+                nameof(Person.Name),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
 
             genderComboBox.DataBindings.Add(new Binding(
-                "SelectedItem",
+                nameof(ComboBox.SelectedItem),
                 this.person,
-                "Gender",
+                nameof(Person.Gender),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
 
             birthDatePicker.DataBindings.Add(new Binding(
-                "Value",
+                nameof(DateTimePicker.Value),
                 this.person,
-                "BirthDate",
+                nameof(Person.BirthDate),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
 
             avrMarkUpDown.DataBindings.Add(new Binding(
-                "Value",
+                nameof(NumericUpDown.Value),
                 this.person,
-                "AvrMark",
+                nameof(Person.AvrMark),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
 
             deptCheckBox.DataBindings.Add(new Binding(
-                "Checked",
+                nameof(CheckBox.Checked),
                 this.person,
-                "Dept",
+                nameof(Person.Dept),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
 
             expellCheckBox.DataBindings.Add(new Binding(
-                "Checked",
+                nameof(CheckBox.Checked),
                 this.person,
-                "Expelled",
+                nameof(Person.Expelled),
                 false,
                 DataSourceUpdateMode.OnPropertyChanged));
         }
 
         public Person Person => person;
+
+        private void genderComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.Graphics.FillEllipse(Brushes.Red,
+                new Rectangle(e.Bounds.X + 2, e.Bounds.Y + 2, e.Bounds.Height - 4, e.Bounds.Height - 4));
+            if (e.Index > -1)
+            {
+                e.Graphics.DrawString(
+                    GetDisplayValue((Gender)(sender as ComboBox).Items[e.Index]), 
+                    e.Font, new SolidBrush(e.ForeColor), 
+                    e.Bounds.X + 20, e.Bounds.Y);
+            }
+        }
+
+        private string GetDisplayValue(Gender value)
+        {
+            var field = value.GetType().GetField(value.ToString());
+            var attributes = field.GetCustomAttributes<DescriptionAttribute>(false);
+            return attributes.FirstOrDefault()?.Description;
+        }
     }
 }

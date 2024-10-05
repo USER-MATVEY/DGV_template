@@ -92,6 +92,7 @@
             // 
             // canselButton
             // 
+            this.canselButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.canselButton.Location = new System.Drawing.Point(220, 16);
             this.canselButton.Name = "canselButton";
             this.canselButton.Size = new System.Drawing.Size(75, 23);
@@ -185,11 +186,14 @@
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(110, 136);
             this.genderComboBox.Name = "genderComboBox";
             this.genderComboBox.Size = new System.Drawing.Size(177, 21);
             this.genderComboBox.TabIndex = 18;
+            this.genderComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.genderComboBox_DrawItem);
             // 
             // label4
             // 
