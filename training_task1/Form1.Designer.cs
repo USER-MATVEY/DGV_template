@@ -48,6 +48,12 @@
             this.UpdateButton = new System.Windows.Forms.ToolStripButton();
             this.DeleteButton = new System.Windows.Forms.ToolStripButton();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenderColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BirthDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AvrMarkColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExpellColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeptColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mainMenuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -202,14 +208,66 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NameColumn,
+            this.GenderColumn,
+            this.BirthDateColumn,
+            this.AvrMarkColumn,
+            this.ExpellColumn,
+            this.DeptColumn});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView.Location = new System.Drawing.Point(0, 49);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(800, 379);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
+            // 
+            // NameColumn
+            // 
+            this.NameColumn.DataPropertyName = "Name";
+            this.NameColumn.HeaderText = "ФИО";
+            this.NameColumn.Name = "NameColumn";
+            this.NameColumn.ReadOnly = true;
+            // 
+            // GenderColumn
+            // 
+            this.GenderColumn.DataPropertyName = "Gender";
+            this.GenderColumn.HeaderText = "Пол";
+            this.GenderColumn.Name = "GenderColumn";
+            this.GenderColumn.ReadOnly = true;
+            // 
+            // BirthDateColumn
+            // 
+            this.BirthDateColumn.DataPropertyName = "BirthDate";
+            this.BirthDateColumn.HeaderText = "Дата Рождения";
+            this.BirthDateColumn.Name = "BirthDateColumn";
+            this.BirthDateColumn.ReadOnly = true;
+            // 
+            // AvrMarkColumn
+            // 
+            this.AvrMarkColumn.DataPropertyName = "AvrMark";
+            this.AvrMarkColumn.HeaderText = "Ср. Оценка";
+            this.AvrMarkColumn.Name = "AvrMarkColumn";
+            this.AvrMarkColumn.ReadOnly = true;
+            // 
+            // ExpellColumn
+            // 
+            this.ExpellColumn.DataPropertyName = "Expelled";
+            this.ExpellColumn.HeaderText = "Отчислен";
+            this.ExpellColumn.Name = "ExpellColumn";
+            this.ExpellColumn.ReadOnly = true;
+            // 
+            // DeptColumn
+            // 
+            this.DeptColumn.DataPropertyName = "Dept";
+            this.DeptColumn.HeaderText = "Задолжность";
+            this.DeptColumn.Name = "DeptColumn";
+            this.DeptColumn.ReadOnly = true;
             // 
             // Journal
             // 
@@ -256,6 +314,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GenderColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirthDateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AvrMarkColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpellColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeptColumn;
     }
 }
 

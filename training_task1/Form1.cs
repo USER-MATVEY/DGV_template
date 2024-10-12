@@ -19,6 +19,7 @@ namespace training_task1
 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.DataSource = bindingSource;
+            ShowStats();
         }
 
         private void AddNewButton_Click(object sender, System.EventArgs e)
@@ -28,6 +29,7 @@ namespace training_task1
             {
                 people.Add(addPerson.Person);
                 bindingSource.ResetBindings(false);
+                ShowStats();
             };
         }
 
@@ -55,6 +57,7 @@ namespace training_task1
                 {
                     people.Remove(data);
                     bindingSource.ResetBindings(false);
+                    ShowStats();
                 }
             }
         }
@@ -74,6 +77,7 @@ namespace training_task1
                     data.Dept = editPerson.Person.Dept;
                     data.Expelled = editPerson.Person.Expelled;
                     bindingSource.ResetBindings(false);
+                    ShowStats();
                 }
             }
         }
@@ -84,7 +88,7 @@ namespace training_task1
             toolStripStatusLabel2.Text = $"{people.Where(x => x.Gender == Gender.Female).Count()} Ж / {people.Where(x => x.Gender == Gender.Female).Count()} М";
             toolStripStatusLabel3.Text = $"Отчисленны: {people.Where(x => x.Expelled).Count()}";
             toolStripStatusLabel4.Text = $"Задолжники: {people.Where(x => x.Dept).Count()}";
-            toolStripStatusLabel5.Text = $"Средняя отценка: {people.DefaultIfEmpty(new Person).Average(x => x.AvrMark)}";
+            toolStripStatusLabel5.Text = $"Средняя отценка: {people.DefaultIfEmpty(new Person()).Average(x => x.AvrMark)}";
         }
     }
 }
