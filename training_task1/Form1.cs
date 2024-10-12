@@ -87,7 +87,8 @@ namespace training_task1
 
         private void Journal_Load(object sender, System.EventArgs e)
         {
-
+            bindingSource.DataSource = peopleManager.GetAllAsync();
+            bindingSource.ResetBindings(false);
         }
     }
 }
