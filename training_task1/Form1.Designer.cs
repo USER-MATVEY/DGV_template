@@ -261,6 +261,7 @@
             this.ExpellColumn.HeaderText = "Отчислен";
             this.ExpellColumn.Name = "ExpellColumn";
             this.ExpellColumn.ReadOnly = true;
+            this.ExpellColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // DeptColumn
             // 
@@ -268,6 +269,7 @@
             this.DeptColumn.HeaderText = "Задолжность";
             this.DeptColumn.Name = "DeptColumn";
             this.DeptColumn.ReadOnly = true;
+            this.DeptColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // Journal
             // 

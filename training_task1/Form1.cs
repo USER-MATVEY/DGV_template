@@ -37,13 +37,13 @@ namespace training_task1
         {
             if (dataGridView.Columns[e.ColumnIndex].Name == "ExpellColumn")
             {
-                var data = (Person)dataGridView.Rows[e.ColumnIndex].DataBoundItem;
+                var data = (Person)dataGridView.Rows[e.RowIndex].DataBoundItem;
                 e.Value = data.Expelled ? "Yes" : string.Empty;
             }
 
             if (dataGridView.Columns[e.ColumnIndex].Name == "DeptColumn")
             {
-                var data = (Person)dataGridView.Rows[e.ColumnIndex].DataBoundItem;
+                var data = (Person)dataGridView.Rows[e.RowIndex].DataBoundItem;
                 e.Value = data.Dept ? "Yes" : string.Empty;
             }
         }
