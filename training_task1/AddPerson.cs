@@ -26,6 +26,7 @@ namespace training_task1
                 genderComboBox.SelectedIndex = 0;
             }
 
+            fioTextBox.AddBinding(this.person, x => x.Text, y => y.Name);
 
             genderComboBox.AddBinding(this.person, x => x.SelectedItem, y => y.Gender);
             
