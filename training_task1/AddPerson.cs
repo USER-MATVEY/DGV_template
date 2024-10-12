@@ -14,7 +14,26 @@ namespace training_task1
 
         public AddPerson(Person person = null)
         {
-            this.person = person ?? DataGenerator.CreatePerson(x => x.Name = "jira");
+            this.person = person == null
+                ?
+                DataGenerator.CreatePerson(
+                x =>
+                {
+                    x.Id = Guid.NewGuid();
+                    x.Name = "jira";
+                    x.BirthDate = DateTime.Now.AddYears(-13);
+                })
+                :
+                new Person
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    BirthDate = person.BirthDate,
+                    Gender = person.Gender,
+                    AvrMark = person.AvrMark,
+                    Dept = person.Dept,
+                    Expelled = person.Expelled,
+                };
             InitializeComponent();
 
             foreach (var item in Enum.GetValues(typeof(Gender)))
