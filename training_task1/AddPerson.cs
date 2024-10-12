@@ -14,7 +14,7 @@ namespace training_task1
 
         public AddPerson(Person person = null)
         {
-            this.person = person ?? DataGenerator.CreatePerson(x => x.Name = "Жожа");
+            this.person = person ?? DataGenerator.CreatePerson(x => x.Name = "jira");
             InitializeComponent();
 
             foreach (var item in Enum.GetValues(typeof(Gender)))
@@ -27,40 +27,15 @@ namespace training_task1
             }
 
 
-            genderComboBox.DataBindings.Add(new Binding(
-                nameof(ComboBox.SelectedItem),
-                this.person,
-                nameof(Person.Gender),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
+            genderComboBox.AddBinding(this.person, x => x.SelectedItem, y => y.Gender);
+            
+            birthDatePicker.AddBinding(this.person, x => x.Value, y => y.BirthDate);
 
-            birthDatePicker.DataBindings.Add(new Binding(
-                nameof(DateTimePicker.Value),
-                this.person,
-                nameof(Person.BirthDate),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
+            avrMarkUpDown.AddBinding(this.person, x => x.Value, y => y.AvrMark);
 
-            avrMarkUpDown.DataBindings.Add(new Binding(
-                nameof(NumericUpDown.Value),
-                this.person,
-                nameof(Person.AvrMark),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
+            deptCheckBox.AddBinding(this.person, x => x.Checked, y => y.Dept);
 
-            deptCheckBox.DataBindings.Add(new Binding(
-                nameof(CheckBox.Checked),
-                this.person,
-                nameof(Person.Dept),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
-
-            expellCheckBox.DataBindings.Add(new Binding(
-                nameof(CheckBox.Checked),
-                this.person,
-                nameof(Person.Expelled),
-                false,
-                DataSourceUpdateMode.OnPropertyChanged));
+            expellCheckBox.AddBinding(this.person, x => x.Checked, y => y.Expelled);
         }
 
         public Person Person => person;
