@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace training_task1.Models
+namespace DataGrid.Contracts.Models
 {
     public enum Gender
     {

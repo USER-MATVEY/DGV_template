@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataGrid.Framework.PeopleManager;
+using DataGrid.Storage.Memory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,11 @@ namespace training_task1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Journal());
+
+            var storage = new MemoryPeopleStorage();
+            var manager = new PeopleManager(storage);
+            
+            Application.Run(new Journal(manager));
         }
     }
 }

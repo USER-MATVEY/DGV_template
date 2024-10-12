@@ -1,5 +1,5 @@
-﻿using System;
-using training_task1.Models;
+﻿using DataGrid.Framework.Contracts.Models;
+using System;
 
 namespace training_task1
 {

@@ -1,35 +1,33 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using DataGrid.Framework.Contracts;
+using DataGrid.Framework.Contracts.Models;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using training_task1.Models;
 
 namespace training_task1
 {
     public partial class Journal : Form
     {
-        private List<Person> people;
+        private IPeopleManager peopleManager;
         private BindingSource bindingSource;
 
-        public Journal()
+        public Journal(IPeopleManager peopleManager)
         {
-            bindingSource= new BindingSource();
-            people = new List<Person>();
-            bindingSource.DataSource = people;
+            this.peopleManager = peopleManager;
+            bindingSource = new BindingSource();
             InitializeComponent();
 
             dataGridView.AutoGenerateColumns = false;
             dataGridView.DataSource = bindingSource;
-            ShowStats();
         }
 
-        private void AddNewButton_Click(object sender, System.EventArgs e)
+        private async void AddNewButton_Click(object sender, System.EventArgs e)
         {
             AddPerson addPerson = new AddPerson();
             if (addPerson.ShowDialog(this) == DialogResult.OK)
             {
-                people.Add(addPerson.Person);
+                await peopleManager.AddAsync(addPerson.Person);
                 bindingSource.ResetBindings(false);
-                ShowStats();
+                await ShowStats();
             };
         }
 
@@ -48,21 +46,21 @@ namespace training_task1
             }
         }
 
-        private void DeleteButton_Click(object sender, System.EventArgs e)
+        private async void DeleteButton_Click(object sender, System.EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count != 0) 
+            if (dataGridView.SelectedRows.Count != 0)
             {
                 var data = (Person)dataGridView.Rows[dataGridView.SelectedRows[0].Index].DataBoundItem;
                 if (MessageBox.Show("Вы реально хотите удалить запись?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    people.Remove(data);
+                    await peopleManager.deleteAsync(data.Id);
                     bindingSource.ResetBindings(false);
-                    ShowStats();
+                    await ShowStats();
                 }
             }
         }
 
-        private void UpdateButton_Click(object sender, System.EventArgs e)
+        private async void UpdateButton_Click(object sender, System.EventArgs e)
         {
             if (dataGridView.SelectedRows.Count != 0)
             {
@@ -70,25 +68,26 @@ namespace training_task1
                 AddPerson editPerson = new AddPerson();
                 if (editPerson.ShowDialog(this) == DialogResult.OK)
                 {
-                    data.Name = editPerson.Person.Name;
-                    data.AvrMark = editPerson.Person.AvrMark;
-                    data.Gender = editPerson.Person.Gender;
-                    data.BirthDate = editPerson.Person.BirthDate;
-                    data.Dept = editPerson.Person.Dept;
-                    data.Expelled = editPerson.Person.Expelled;
+                    await peopleManager.EditAsync(editPerson.Person);
                     bindingSource.ResetBindings(false);
-                    ShowStats();
+                    await ShowStats();
                 }
             }
         }
 
-        public void ShowStats()
+        public async Task ShowStats()
         {
-            toolStripStatusLabel1.Text = $"Всего: {people.Count}";
-            toolStripStatusLabel2.Text = $"{people.Where(x => x.Gender == Gender.Female).Count()} Ж / {people.Where(x => x.Gender == Gender.Female).Count()} М";
-            toolStripStatusLabel3.Text = $"Отчисленны: {people.Where(x => x.Expelled).Count()}";
-            toolStripStatusLabel4.Text = $"Задолжники: {people.Where(x => x.Dept).Count()}";
-            toolStripStatusLabel5.Text = $"Средняя отценка: {people.DefaultIfEmpty(new Person()).Average(x => x.AvrMark)}";
+            var result = await peopleManager.GetAllStatsAsync();
+            toolStripStatusLabel1.Text = $"Всего: {result.Count}";
+            toolStripStatusLabel2.Text = $"{result.FemaleCount} Ж / {result.MaleCount} М";
+            toolStripStatusLabel3.Text = $"Отчисленны: {result.ExpelledCount}";
+            toolStripStatusLabel4.Text = $"Задолжники: {result.DeptCount}";
+            toolStripStatusLabel5.Text = $"Средняя отценка: {result.AvrRate}";
+        }
+
+        private void Journal_Load(object sender, System.EventArgs e)
+        {
+
         }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using DataGrid.Framework.Contracts.Models;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using training_task1.Models;
 
 namespace training_task1
 {
@@ -48,7 +48,7 @@ namespace training_task1
             fioTextBox.AddBinding(this.person, x => x.Text, y => y.Name, errorProvider);
 
             genderComboBox.AddBinding(this.person, x => x.SelectedItem, y => y.Gender, errorProvider);
-            
+
             birthDatePicker.AddBinding(this.person, x => x.Value, y => y.BirthDate, errorProvider);
 
             avrMarkUpDown.AddBinding(this.person, x => x.Value, y => y.AvrMark, errorProvider);
@@ -68,8 +68,8 @@ namespace training_task1
             if (e.Index > -1)
             {
                 e.Graphics.DrawString(
-                    GetDisplayValue((Gender)(sender as ComboBox).Items[e.Index]), 
-                    e.Font, new SolidBrush(e.ForeColor), 
+                    GetDisplayValue((Gender)(sender as ComboBox).Items[e.Index]),
+                    e.Font, new SolidBrush(e.ForeColor),
                     e.Bounds.X + 20, e.Bounds.Y);
             }
         }

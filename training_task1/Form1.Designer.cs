@@ -283,6 +283,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Journal";
             this.Text = "Электронный Журнал";
+            this.Load += new System.EventHandler(this.Journal_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

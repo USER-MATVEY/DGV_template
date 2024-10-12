@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace training_task1.Models
+namespace DataGrid.Contracts.Models
 {
     /// <summary>
     /// Класс студента.

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Windows.Forms;
-using training_task1.Models;
 
 namespace training_task1
 {
@@ -44,13 +43,12 @@ namespace training_task1
                         }
                     };
                 }
-                
             }
         }
 
         private static string GetMeberName<TItem, TMember>(Expression<Func<TItem, TMember>> targetMember)
         {
-            if (targetMember.Body is MemberExpression memberExpression) 
+            if (targetMember.Body is MemberExpression memberExpression)
             {
                 return memberExpression.Member.Name;
             }
