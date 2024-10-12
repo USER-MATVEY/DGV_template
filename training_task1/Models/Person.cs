@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace training_task1.Models
 {
@@ -12,6 +13,8 @@ namespace training_task1.Models
         /// <summary>
         /// ФИО студента.
         /// </summary>
+        [Required]
+        [StringLength(50, MinimumLength = 6)]
         public string Name { get; set; }
 
         /// <inheritdoc cref="Models.Gender"/>
@@ -26,10 +29,11 @@ namespace training_task1.Models
         /// Признак - задолженость
         /// </summary>
         public bool Dept { get; set; }
-        
+
         /// <summary>
         /// Средний балл
         /// </summary>
+        [Range(0, 5)]
         public decimal AvrMark { get; set; }
 
         /// <summary>

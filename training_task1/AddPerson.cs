@@ -26,17 +26,17 @@ namespace training_task1
                 genderComboBox.SelectedIndex = 0;
             }
 
-            fioTextBox.AddBinding(this.person, x => x.Text, y => y.Name);
+            fioTextBox.AddBinding(this.person, x => x.Text, y => y.Name, errorProvider);
 
-            genderComboBox.AddBinding(this.person, x => x.SelectedItem, y => y.Gender);
+            genderComboBox.AddBinding(this.person, x => x.SelectedItem, y => y.Gender, errorProvider);
             
-            birthDatePicker.AddBinding(this.person, x => x.Value, y => y.BirthDate);
+            birthDatePicker.AddBinding(this.person, x => x.Value, y => y.BirthDate, errorProvider);
 
-            avrMarkUpDown.AddBinding(this.person, x => x.Value, y => y.AvrMark);
+            avrMarkUpDown.AddBinding(this.person, x => x.Value, y => y.AvrMark, errorProvider);
 
-            deptCheckBox.AddBinding(this.person, x => x.Checked, y => y.Dept);
+            deptCheckBox.AddBinding(this.person, x => x.Checked, y => y.Dept, errorProvider);
 
-            expellCheckBox.AddBinding(this.person, x => x.Checked, y => y.Expelled);
+            expellCheckBox.AddBinding(this.person, x => x.Checked, y => y.Expelled, errorProvider);
         }
 
         public Person Person => person;
