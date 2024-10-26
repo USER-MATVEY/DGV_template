@@ -1,5 +1,5 @@
-﻿using DataGrid.Framework.Contracts;
-using DataGrid.Framework.Contracts.Models;
+﻿using DataGrid.Standart.Contracts;
+using DataGrid.Standart.Contracts.Models;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 

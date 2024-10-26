@@ -96,13 +96,13 @@
     <None Include="Resources\people_icon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DataGrid.Framework.Contracts\DataGrid.Framework.Contracts.csproj">
-      <Project>{04EA404F-48D9-4722-A57F-CF9A5F8A062C}</Project>
-      <Name>DataGrid.Framework.Contracts</Name>
-    </ProjectReference>
     <ProjectReference Include="DataGrid.Framework.PeopleManager\DataGrid.Framework.PeopleManager.csproj">
       <Project>{13cae645-2933-44ed-a240-d8e9d82e150f}</Project>
       <Name>DataGrid.Framework.PeopleManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="DataGrid.Standart.Contracts\DataGrid.Standart.Contracts.csproj">
+      <Project>{03004A4F-B4B5-43C6-A897-703C73531831}</Project>
+      <Name>DataGrid.Standart.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="DataGrid.Storage.Memory\DataGrid.Storage.Memory.csproj">
       <Project>{02963dfe-23cb-4452-b631-a1b0f1f235a1}</Project>

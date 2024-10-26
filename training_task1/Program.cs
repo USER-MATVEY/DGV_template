@@ -1,4 +1,4 @@
-﻿using DataGrid.Framework.PeopleManager;
+﻿using DataGrid.Standart.PeopleManager;
 using DataGrid.Storage.Memory;
 using System;
 using System.Collections.Generic;

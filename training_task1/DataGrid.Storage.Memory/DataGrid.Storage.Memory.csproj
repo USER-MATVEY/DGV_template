@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataGrid.Framework.Contracts\DataGrid.Framework.Contracts.csproj">
-      <Project>{04ea404f-48d9-4722-a57f-cf9a5f8a062c}</Project>
-      <Name>DataGrid.Framework.Contracts</Name>
+    <ProjectReference Include="..\DataGrid.Standart.Contracts\DataGrid.Standart.Contracts.csproj">
+      <Project>{03004a4f-b4b5-43c6-a897-703c73531831}</Project>
+      <Name>DataGrid.Standart.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

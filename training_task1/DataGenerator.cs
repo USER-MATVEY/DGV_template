@@ -1,4 +1,4 @@
-﻿using DataGrid.Framework.Contracts.Models;
+﻿using DataGrid.Standart.Contracts.Models;
 using System;
 
 namespace training_task1
